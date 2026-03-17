@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { min-height: 100vh; }
+}
+
+@layer utilities {
+  .step-active  { @apply bg-primary-600 text-white border-primary-600; }
+  .step-done    { @apply bg-primary-600 text-white border-primary-600; }
+  .step-pending { @apply bg-white text-gray-400 border-gray-300; }
+}
