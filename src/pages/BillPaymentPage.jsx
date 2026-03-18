@@ -165,12 +165,28 @@ export default function BillPaymentPage() {
   const loadCategories = async () => {
     setLoading(true);
     try {
-      const res = await getBillCategories();
-      if (res.success) {
-        setCategories(res.data);
-      } else {
-        toast.error(res.message || "Không thể tải danh sách dịch vụ.");
-      }
+      // Mock data for testing - replace with real API call later
+      const mockCategories = [
+        { billCategoryId: 1, categoryName: "Tiền điện", description: "Hóa đơn tiền điện" },
+        { billCategoryId: 2, categoryName: "Tiền nước", description: "Hóa đơn tiền nước" },
+        { billCategoryId: 3, categoryName: "Internet/WiFi", description: "Cước internet và wifi" },
+        { billCategoryId: 4, categoryName: "Học phí", description: "Học phí trường đại học, cao đẳng" },
+        { billCategoryId: 5, categoryName: "Điện thoại", description: "Cước điện thoại di động" },
+        { billCategoryId: 6, categoryName: "Truyền hình", description: "Gói truyền hình cáp, vệ tinh" },
+      ];
+
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      setCategories(mockCategories);
+
+      // Real API call (commented out until backend is ready)
+      // const res = await getBillCategories();
+      // if (res.success) {
+      //   setCategories(res.data);
+      // } else {
+      //   toast.error(res.message || "Không thể tải danh sách dịch vụ.");
+      // }
     } catch {
       toast.error("Lỗi tải danh sách dịch vụ.");
     } finally {
@@ -188,13 +204,27 @@ export default function BillPaymentPage() {
 
     setLoading(true);
     try {
-      const res = await getProvidersByCategory(selectedCategory.billCategoryId);
-      if (res.success) {
-        setProviders(res.data);
-        setStep(2);
-      } else {
-        toast.error(res.message || "Không thể tải nhà cung cấp.");
-      }
+      // Mock providers data for testing
+      const mockProviders = [
+        { billProviderId: 1, providerName: `Công ty ${selectedCategory.categoryName} TP.HCM`, providerCode: "HCMC_01" },
+        { billProviderId: 2, providerName: `Công ty ${selectedCategory.categoryName} Hà Nội`, providerCode: "HN_01" },
+        { billProviderId: 3, providerName: `Công ty ${selectedCategory.categoryName} Đà Nẵng`, providerCode: "DN_01" },
+      ];
+
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      setProviders(mockProviders);
+      setStep(2);
+
+      // Real API call (commented out until backend is ready)
+      // const res = await getProvidersByCategory(selectedCategory.billCategoryId);
+      // if (res.success) {
+      //   setProviders(res.data);
+      //   setStep(2);
+      // } else {
+      //   toast.error(res.message || "Không thể tải nhà cung cấp.");
+      // }
     } catch {
       toast.error("Lỗi tải danh sách nhà cung cấp.");
     } finally {
@@ -214,18 +244,50 @@ export default function BillPaymentPage() {
 
     setLoading(true);
     try {
-      const res = await verifyCustomer(selectedProvider.billProviderId, customerCode);
-      if (res.success) {
-        setBillInfo(res.data);
-        // Load user cards
-        const cardsRes = await getUserCards();
-        if (cardsRes.success) {
-          setUserCards(cardsRes.data);
+      // Mock bill info and user cards for testing
+      const mockBillInfo = {
+        customerName: "Nguyễn Văn A",
+        customerCode: customerCode,
+        billingPeriod: "03/2026",
+        amount: 420000,
+        dueDate: "2026-04-15"
+      };
+
+      const mockUserCards = [
+        {
+          cardId: 1,
+          cardNumber: "4532123456789012",
+          cardType: { cardName: "MasterCredit Platinum" },
+          status: "Active"
+        },
+        {
+          cardId: 2,
+          cardNumber: "4532987654321098",
+          cardType: { cardName: "MasterCredit Gold" },
+          status: "Active"
         }
-        setStep(4);
-      } else {
-        toast.error(res.message || "Mã khách hàng không hợp lệ.");
-      }
+      ];
+
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      setBillInfo(mockBillInfo);
+      setUserCards(mockUserCards);
+      setStep(4);
+
+      // Real API calls (commented out until backend is ready)
+      // const res = await verifyCustomer(selectedProvider.billProviderId, customerCode);
+      // if (res.success) {
+      //   setBillInfo(res.data);
+      //   // Load user cards
+      //   const cardsRes = await getUserCards();
+      //   if (cardsRes.success) {
+      //     setUserCards(cardsRes.data);
+      //   }
+      //   setStep(4);
+      // } else {
+      //   toast.error(res.message || "Mã khách hàng không hợp lệ.");
+      // }
     } catch {
       toast.error("Lỗi xác minh mã khách hàng.");
     } finally {
@@ -245,19 +307,34 @@ export default function BillPaymentPage() {
 
     setPinSubmitting(true);
     try {
-      const res = await processBillPayment({
-        providerId: selectedProvider.billProviderId,
-        customerCode,
-        amount: billInfo.amount,
-        cardId: selectedCard.cardId,
-        pin,
-      });
-      if (res.success) {
-        setPaymentResult(res.data);
-        setStep(6);
-      } else {
-        toast.error(res.message || "Thanh toán thất bại.");
-      }
+      // Mock payment result for testing
+      const mockPaymentResult = {
+        billPaymentId: Math.floor(Math.random() * 1000000) + 100000,
+        paymentDate: new Date().toISOString(),
+        status: "Success"
+      };
+
+      // Simulate payment processing delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      setPaymentResult(mockPaymentResult);
+      setStep(6);
+      toast.success("Thanh toán thành công!");
+
+      // Real API call (commented out until backend is ready)
+      // const res = await processBillPayment({
+      //   providerId: selectedProvider.billProviderId,
+      //   customerCode,
+      //   amount: billInfo.amount,
+      //   cardId: selectedCard.cardId,
+      //   pin,
+      // });
+      // if (res.success) {
+      //   setPaymentResult(res.data);
+      //   setStep(6);
+      // } else {
+      //   toast.error(res.message || "Thanh toán thất bại.");
+      // }
     } catch {
       toast.error("Lỗi xử lý thanh toán.");
     } finally {
