@@ -15,6 +15,10 @@ api.interceptors.request.use((config) => {
 export const getMyCards = () =>
   api.get("/api/cards").then((r) => r.data);
 
+// GET /api/cards/{cardId} — chi tiết thông tin một thẻ (bao gồm CVV và số thẻ đầy đủ)
+export const getCardDetail = (cardId) =>
+  api.get(`/api/cards/${cardId}`).then((r) => r.data);
+
 // GET /api/cards/types — danh sách tất cả loại thẻ (public, không cần auth)
 export const getAllCardTypes = () =>
   api.get("/api/cards/types").then((r) => r.data);

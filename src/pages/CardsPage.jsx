@@ -5,11 +5,12 @@ import {
   FiHome, FiUser, FiCreditCard, FiActivity, FiSave,
   FiDollarSign, FiSettings, FiLogOut, FiBell, FiPlus,
   FiEye, FiEyeOff, FiShield, FiAlertCircle, FiCheckCircle,
-  FiChevronRight, FiPhone, FiMail, FiMessageCircle
+  FiChevronRight, FiPhone, FiMail, FiMessageCircle, FiInfo
 } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
 import { getMyCards } from "../services/cardService";
 import Logo from "../components/Logo";
+import CardDetailModal from "../components/CardDetailModal";
 
 // ── Card gradient by type ──────────────────────────────────
 const cardStyle = (cardName = "") => {
@@ -84,6 +85,8 @@ export default function CardsPage() {
   const [loading, setLoading] = useState(true);
   const [selectedCard, setSelectedCard] = useState(null);
   const [showNumber, setShowNumber] = useState(false);
+  const [showDetailModal, setShowDetailModal] = useState(false);
+  const [detailCardId, setDetailCardId] = useState(null);
 
   const handleLogout = () => { logout(); navigate("/login"); };
 
@@ -269,6 +272,18 @@ export default function CardsPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
+                      {/* View details button */}
+                      <button
+                        onClick={() => {
+                          setDetailCardId(selectedCard.id);
+                          setShowDetailModal(true);
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg font-medium transition-colors"
+                        title="Xem chi tiết thẻ"
+                      >
+                        <FiInfo size={16} />
+                        <span className="text-sm">Xem chi tiết</span>
+                      </button>
                       {/* Show/hide card number */}
                       <button
                         onClick={() => setShowNumber(!showNumber)}
@@ -351,6 +366,16 @@ export default function CardsPage() {
                   </div>
                 </div>
               </div>
+              <button
+                onClick={() => {
+                  setDetailCardId(selectedCard.id);
+                  setShowDetailModal(true);
+                }}
+                className="w-full mt-3 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-lg font-medium transition-colors"
+              >
+                <FiInfo size={16} />
+                Xem chi tiết đầy đủ
+              </button>
             </div>
           )}
 
@@ -403,6 +428,17 @@ export default function CardsPage() {
           </div>
         </div>
       </div>
+
+      {/* Card Detail Modal */}
+      {showDetailModal && detailCardId && (
+        <CardDetailModal
+          cardId={detailCardId}
+          onClose={() => {
+            setShowDetailModal(false);
+            setDetailCardId(null);
+          }}
+        />
+      )}
     </div>
   );
 }
