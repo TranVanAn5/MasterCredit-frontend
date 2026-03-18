@@ -169,7 +169,7 @@ export default function CardComparePage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <button
-              onClick={() => navigate("/browse-cards")}
+              onClick={() => navigate("/cards")}
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-3 transition-colors"
             >
               <FiArrowLeft size={20} />
