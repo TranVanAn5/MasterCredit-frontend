@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage     from "./pages/LoginPage";
 import RegisterPage  from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
+import ProfilePage from "./pages/ProfilePage";
 import CardsPage     from "./pages/CardsPage";
 import CardCatalogPage from "./pages/CardCatalogPage";
 import PublicCardsPage from "./pages/PublicCardsPage";
@@ -32,6 +33,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
               </ProtectedRoute>
             }
           />

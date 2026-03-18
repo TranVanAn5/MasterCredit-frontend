@@ -107,7 +107,7 @@ export default function CardsPage() {
 
   const sidebarItems = [
     { icon: <FiHome size={18} />,       label: "Bảng điều khiển", path: "/dashboard" },
-    { icon: <FiUser size={18} />,       label: "Tài khoản",       path: null },
+    { icon: <FiUser size={18} />,       label: "Tài khoản",       path: "/profile" },
     { icon: <FiCreditCard size={18} />, label: "Thẻ",             path: "/cards", active: true },
     { icon: <FiActivity size={18} />,   label: "Giao dịch",       path: null },
     { icon: <FiSave size={18} />,       label: "Tiết kiệm",       path: null },

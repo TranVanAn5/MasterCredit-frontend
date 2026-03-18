@@ -44,3 +44,7 @@ export const verifyLoginOtp = (email, otpCode) =>
 // ── Shared ─────────────────────────────────────────────
 export const resendOtp = (email, otpType) =>
   api.post("/api/auth/resend-otp", { email, otpType }).then((r) => r.data);
+
+// ── Profile ────────────────────────────────────────────
+export const getProfile = () =>
+  api.get("/api/auth/profile").then((r) => r.data);
