@@ -43,10 +43,10 @@ export default function DashboardPage() {
   ];
 
   const quickActions = [
-    { icon: <FiSend size={20} />, label: "Chuyển tiền", bg: "bg-blue-100", text: "text-blue-600" },
-    { icon: <FiFileText size={20} />, label: "Hóa đơn", bg: "bg-green-100", text: "text-green-600" },
-    { icon: <FiSmartphone size={20} />, label: "Nạp ĐT", bg: "bg-purple-100", text: "text-purple-600" },
-    { icon: <FiTrendingUp size={20} />, label: "Tiết kiệm", bg: "bg-orange-100", text: "text-orange-600" },
+    { icon: <FiSend size={20} />, label: "Chuyển tiền", bg: "bg-blue-100", text: "text-blue-600", path: null },
+    { icon: <FiFileText size={20} />, label: "Hóa đơn", bg: "bg-green-100", text: "text-green-600", path: "/bill-payment" },
+    { icon: <FiSmartphone size={20} />, label: "Nạp ĐT", bg: "bg-purple-100", text: "text-purple-600", path: null },
+    { icon: <FiTrendingUp size={20} />, label: "Tiết kiệm", bg: "bg-orange-100", text: "text-orange-600", path: null },
   ];
 
   const recentTransactions = [
@@ -155,6 +155,7 @@ export default function DashboardPage() {
               {quickActions.map((action, index) => (
                 <button
                   key={index}
+                  onClick={() => action.path && navigate(action.path)}
                   className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow text-center"
                 >
                   <div className={`w-12 h-12 ${action.bg} ${action.text} rounded-lg flex items-center justify-center mx-auto mb-3`}>

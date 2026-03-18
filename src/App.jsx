@@ -13,6 +13,7 @@ import CardComparePage from "./pages/CardComparePage";
 import CardDetailPage from "./pages/CardDetailPage";
 import CardApplicationPage from "./pages/CardApplicationPage";
 import ChatPage from "./pages/ChatPage";
+import BillPaymentPage from "./pages/BillPaymentPage";
 
 function ProtectedRoute({ children }) {
   const { isLoggedIn } = useAuth();
@@ -89,6 +90,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <ChatPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bill-payment"
+            element={
+              <ProtectedRoute>
+                <BillPaymentPage />
               </ProtectedRoute>
             }
           />
