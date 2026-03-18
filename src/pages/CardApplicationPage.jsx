@@ -59,7 +59,7 @@ const cardGradient = (name = "") => {
 
 function StepBanner({ step, title, subtitle, Icon }) {
   return (
-    <div className="bg-gradient-to-r from-indigo-900 via-blue-900 to-blue-800 rounded-t-2xl px-8 py-7 text-white">
+    <div className="bg-gradient-to-r from-emerald-900 via-green-900 to-teal-800 rounded-t-2xl px-8 py-7 text-white">
       {/* Progress bar */}
       <div className="w-full bg-white/20 rounded-full h-1.5 mb-5">
         <div
@@ -73,12 +73,12 @@ function StepBanner({ step, title, subtitle, Icon }) {
           <Icon size={22} />
         </div>
         <div>
-          <p className="text-xs font-semibold text-blue-200 uppercase tracking-wider mb-1">
+          <p className="text-xs font-semibold text-green-200 uppercase tracking-wider mb-1">
             Bước {step}/5
           </p>
           <h2 className="text-xl font-bold leading-tight">{title}</h2>
           {subtitle && (
-            <p className="text-sm text-blue-200 mt-1 leading-relaxed">{subtitle}</p>
+            <p className="text-sm text-green-200 mt-1 leading-relaxed">{subtitle}</p>
           )}
         </div>
       </div>
@@ -99,19 +99,19 @@ function StepDots({ current }) {
             <div className="flex flex-col items-center">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300
-                  ${done   ? "bg-indigo-600 text-white" : ""}
-                  ${active ? "bg-indigo-600 text-white ring-4 ring-indigo-100" : ""}
+                  ${done   ? "bg-emerald-600 text-white" : ""}
+                  ${active ? "bg-emerald-600 text-white ring-4 ring-emerald-100" : ""}
                   ${!done && !active ? "bg-gray-100 text-gray-400" : ""}`}
               >
                 {done ? <FiCheck size={13} /> : i + 1}
               </div>
               <span className={`mt-1 text-[10px] font-medium whitespace-nowrap
-                ${active ? "text-indigo-600" : done ? "text-indigo-400" : "text-gray-400"}`}>
+                ${active ? "text-emerald-600" : done ? "text-emerald-400" : "text-gray-400"}`}>
                 {s.label}
               </span>
             </div>
             {i < STEPS.length - 1 && (
-              <div className={`w-10 sm:w-14 h-0.5 mx-1 mb-4 transition-all duration-300 ${i + 1 < current ? "bg-indigo-600" : "bg-gray-200"}`} />
+              <div className={`w-10 sm:w-14 h-0.5 mx-1 mb-4 transition-all duration-300 ${i + 1 < current ? "bg-emerald-600" : "bg-gray-200"}`} />
             )}
           </div>
         );
@@ -134,7 +134,7 @@ function Field({ label, required, children }) {
 }
 
 const inputCls =
-  "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 outline-none transition-all bg-white placeholder-gray-400";
+  "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-300 focus:border-emerald-400 outline-none transition-all bg-white placeholder-gray-400";
 
 // ═════════════════════════════════════════════════════════════════════════════
 //  MAIN PAGE
@@ -359,8 +359,8 @@ export default function CardApplicationPage() {
               onClick={() => setEmployment(o.value)}
               className={`flex-1 py-2.5 rounded-xl text-xs font-semibold border-2 transition-all
                 ${employmentStatus === o.value
-                  ? "bg-indigo-600 border-indigo-600 text-white shadow-sm"
-                  : "bg-white border-gray-200 text-gray-600 hover:border-indigo-300 hover:text-indigo-600"}`}
+                  ? "bg-emerald-600 border-emerald-600 text-white shadow-sm"
+                  : "bg-white border-gray-200 text-gray-600 hover:border-emerald-300 hover:text-emerald-600"}`}
             >
               {o.label}
             </button>
@@ -397,8 +397,8 @@ export default function CardApplicationPage() {
       {/* CCCD section */}
       <div>
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-6 h-6 rounded-lg bg-indigo-100 flex items-center justify-center">
-            <FiShield size={13} className="text-indigo-600" />
+          <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center">
+            <FiShield size={13} className="text-emerald-600" />
           </div>
           <h3 className="text-sm font-bold text-gray-800">Căn cước công dân (CCCD)</h3>
         </div>
@@ -447,10 +447,10 @@ export default function CardApplicationPage() {
     <div className="flex flex-col items-center py-8 gap-8">
       {/* Spinner */}
       <div className="relative w-24 h-24">
-        <div className="w-24 h-24 rounded-full border-4 border-indigo-100" />
-        <div className="absolute inset-0 w-24 h-24 rounded-full border-4 border-indigo-600 border-t-transparent animate-spin" />
+        <div className="w-24 h-24 rounded-full border-4 border-emerald-100" />
+        <div className="absolute inset-0 w-24 h-24 rounded-full border-4 border-emerald-600 border-t-transparent animate-spin" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <FiShield size={28} className="text-indigo-600" />
+          <FiShield size={28} className="text-emerald-600" />
         </div>
       </div>
 
@@ -472,12 +472,12 @@ export default function CardApplicationPage() {
               key={i}
               className={`flex items-center gap-3 p-3.5 rounded-xl border transition-all duration-500
                 ${state === "done"    ? "bg-green-50  border-green-200" : ""}
-                ${state === "loading" ? "bg-indigo-50 border-indigo-200" : ""}
+                ${state === "loading" ? "bg-emerald-50 border-emerald-200" : ""}
                 ${state === "pending" ? "bg-gray-50   border-gray-200 opacity-60" : ""}`}
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0
                 ${state === "done"    ? "bg-green-500  text-white" : ""}
-                ${state === "loading" ? "bg-indigo-100 text-indigo-600" : ""}
+                ${state === "loading" ? "bg-emerald-100 text-emerald-600" : ""}
                 ${state === "pending" ? "bg-gray-200   text-gray-400" : ""}`}
               >
                 {state === "done"    ? <FiCheck size={15} /> :
@@ -486,7 +486,7 @@ export default function CardApplicationPage() {
               </div>
               <span className={`text-sm font-medium
                 ${state === "done"    ? "text-green-800" : ""}
-                ${state === "loading" ? "text-indigo-800" : ""}
+                ${state === "loading" ? "text-emerald-800" : ""}
                 ${state === "pending" ? "text-gray-500" : ""}`}
               >
                 {item.label}
@@ -538,7 +538,7 @@ export default function CardApplicationPage() {
             <span className="text-sm font-bold text-gray-700">Thông tin tài chính</span>
             <button
               onClick={() => { setStep(1); setShowOtp(false); }}
-              className="text-xs text-indigo-600 font-semibold hover:underline flex items-center gap-1"
+              className="text-xs text-emerald-600 font-semibold hover:underline flex items-center gap-1"
             >
               Chỉnh sửa
             </button>
@@ -564,7 +564,7 @@ export default function CardApplicationPage() {
             <span className="text-sm font-bold text-gray-700">Giấy tờ đã tải lên</span>
             <button
               onClick={() => { setStep(2); setShowOtp(false); }}
-              className="text-xs text-indigo-600 font-semibold hover:underline flex items-center gap-1"
+              className="text-xs text-emerald-600 font-semibold hover:underline flex items-center gap-1"
             >
               Thay thế
             </button>
@@ -588,7 +588,7 @@ export default function CardApplicationPage() {
         </div>
 
         {/* OTP destination choice */}
-        <div className="rounded-xl bg-indigo-50 border border-indigo-100 p-5">
+        <div className="rounded-xl bg-emerald-50 border border-emerald-100 p-5">
           <p className="text-sm font-bold text-gray-800 mb-3">
             Chọn kênh nhận mã xác nhận OTP
           </p>
@@ -603,8 +603,8 @@ export default function CardApplicationPage() {
                 onClick={() => setOtpType(key)}
                 className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border-2 text-sm font-semibold transition-all
                   ${otpType === key
-                    ? "bg-indigo-600 border-indigo-600 text-white shadow-sm"
-                    : "bg-white border-gray-200 text-gray-600 hover:border-indigo-300"}`}
+                    ? "bg-emerald-600 border-emerald-600 text-white shadow-sm"
+                    : "bg-white border-gray-200 text-gray-600 hover:border-emerald-300"}`}
               >
                 <Icon size={16} /> {label}
               </button>
@@ -618,15 +618,15 @@ export default function CardApplicationPage() {
   const renderStep4Otp = () => (
     <div className="flex flex-col items-center py-4 gap-7">
       {/* Icon */}
-      <div className="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center">
-        {otpType === "email" ? <FiMail size={28} className="text-indigo-600" /> : <FiSmartphone size={28} className="text-indigo-600" />}
+      <div className="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
+        {otpType === "email" ? <FiMail size={28} className="text-emerald-600" /> : <FiSmartphone size={28} className="text-emerald-600" />}
       </div>
 
       <div className="text-center">
         <h3 className="text-base font-bold text-gray-800 mb-1">Nhập mã xác nhận</h3>
         <p className="text-sm text-gray-500 leading-relaxed">
           Mã OTP 6 chữ số đã được gửi đến{" "}
-          <span className="font-semibold text-indigo-600">
+          <span className="font-semibold text-emerald-600">
             {otpType === "email" ? "email" : "số điện thoại"}
           </span>{" "}
           của bạn. Mã có hiệu lực trong <span className="font-semibold">5 phút</span>.
@@ -641,14 +641,14 @@ export default function CardApplicationPage() {
         {resendCooldown > 0 ? (
           <p className="text-sm text-gray-500 flex items-center gap-1.5">
             <FiClock size={14} />
-            Gửi lại sau <span className="font-bold text-indigo-600 w-7 text-center">{resendCooldown}s</span>
+            Gửi lại sau <span className="font-bold text-emerald-600 w-7 text-center">{resendCooldown}s</span>
           </p>
         ) : (
           <button
             type="button"
             onClick={handleSendOtp}
             disabled={otpSending}
-            className="text-sm text-indigo-600 font-semibold flex items-center gap-1.5 hover:text-indigo-800 disabled:opacity-50"
+            className="text-sm text-emerald-600 font-semibold flex items-center gap-1.5 hover:text-emerald-800 disabled:opacity-50"
           >
             <FiRefreshCw size={14} className={otpSending ? "animate-spin" : ""} />
             Gửi lại mã OTP
@@ -661,7 +661,7 @@ export default function CardApplicationPage() {
         type="button"
         onClick={handleSubmitApplication}
         disabled={otp.length !== 6 || otpSubmitting}
-        className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm
+        className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm
           transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {otpSubmitting ? <FiLoader size={18} className="animate-spin" /> : <FiCheck size={18} />}
@@ -731,7 +731,7 @@ export default function CardApplicationPage() {
       <button
         type="button"
         onClick={() => navigate("/dashboard")}
-        className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm
+        className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm
           transition-colors flex items-center justify-center gap-2"
       >
         <FiHome size={18} /> Về trang chủ
@@ -795,7 +795,7 @@ export default function CardApplicationPage() {
           type="button"
           onClick={onNext}
           disabled={loading || otpSending}
-          className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700
+          className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700
             text-white font-bold text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
         >
           {(loading || otpSending) ? (
@@ -813,7 +813,7 @@ export default function CardApplicationPage() {
   // ═══════════════════════════════════════════════════════════════════════════
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-green-950 to-teal-900 flex flex-col">
       {/* Top bar */}
       <div className="flex items-center justify-between px-6 py-4">
         <button
