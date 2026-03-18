@@ -138,7 +138,7 @@ export default function CardDetailPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <button
-              onClick={() => navigate("/browse-cards")}
+              onClick={() => navigate("/cards")}
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-3 transition-colors"
             >
               <FiArrowLeft size={20} />
@@ -296,7 +296,7 @@ export default function CardDetailPage() {
                     Đăng ký ngay
                   </button>
                   <button
-                    onClick={() => navigate("/browse-cards")}
+                    onClick={() => navigate("/cards")}
                     className="bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-colors border-2 border-gray-300"
                   >
                     Xem thẻ khác
@@ -322,7 +322,7 @@ export default function CardDetailPage() {
               <span className="font-medium text-green-700">Đăng ký thẻ này</span>
             </button>
             <button
-              onClick={() => navigate("/browse-cards")}
+              onClick={() => navigate("/cards")}
               className="w-full flex items-center gap-3 p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors text-left"
             >
               <FiCreditCard size={18} className="text-gray-600" />
